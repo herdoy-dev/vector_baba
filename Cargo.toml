@@ -1,0 +1,40 @@
+[package]
+name = "vector_baba"
+version = "0.2.0"
+edition = "2021"
+description = "Vector Baba: raster image to SVG vectorizer for macOS"
+license = "MIT"
+
+[lib]
+name = "vector_baba"
+path = "src/lib.rs"
+
+[[bin]]
+name = "vector-baba"
+path = "src/main.rs"
+
+[[bin]]
+name = "vector-baba-cli"
+path = "src/bin/cli.rs"
+
+[[bin]]
+name = "gen-icon"
+path = "src/bin/gen_icon.rs"
+
+[dependencies]
+image = "0.25"
+vtracer = "0.6.5"
+visioncortex = "0.8.8"
+eframe = "0.37"
+rfd = "0.17"
+resvg = "0.48"
+clap = { version = "4", features = ["derive"] }
+anyhow = "1"
+rayon = "1.10"
+arboard = "3.7"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 4
+strip = true
